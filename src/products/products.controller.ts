@@ -44,4 +44,14 @@ export class ProductsController {
   remove(@Payload('id', ParseIntPipe) id: number) {
     return this.productsService.remove(id);
   }
+
+
+  @MessagePattern({cmd: 'validate_producs'})
+  validateProduct(@Payload() ids: number[]){
+    
+    return this.productsService.validateProducts(ids);
+  }
+
+
+
 }
